@@ -54,7 +54,6 @@ struct AddTodoView: View {
                             errorMessage = "Make sure to enter something for\nthe new todo item."
                             return
                         }
-                        
                         presentationMode.wrappedValue.dismiss()
                     } label: {
                         Text("Save")

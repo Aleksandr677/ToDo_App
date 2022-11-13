@@ -12,17 +12,31 @@ struct ContentView: View {
     //MARK: - PROPERTIES
     @Environment(\.managedObjectContext) var managedObjectContext
     
+    //Fetch Todo items
+    @FetchRequest(entity: Todo.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Todo.name, ascending: true)]) var todos: FetchedResults<Todo>
+    
     @State private var showingAddTodoView: Bool = false
 
     //MARK: - BODY
     var body: some View {
         NavigationView {
-            List(0..<5) { item in
-                Text("Hello world")
+            List {
+                ForEach(todos, id: \.self) { todo in
+                    HStack {
+                        Text(todo.name ?? "Unknown")
+                        
+                        Spacer()
+                        
+                        Text(todo.priority ?? "Unknown")
+                    }
+                } //Loop
+                .onDelete(perform: deleteTodo)
             } //List
             .navigationTitle("Todo")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
+                EditButton()
+                
                 Button {
                     //Show add todo view
                     showingAddTodoView.toggle()
@@ -36,6 +50,20 @@ struct ContentView: View {
             }
         } //Navigation
     }
+    
+    //MARK: - FUNCTIONS
+    private func deleteTodo(at offsets: IndexSet) {
+        for index in offsets {
+            let todo = todos[index]
+            managedObjectContext.delete(todo)
+            
+            do {
+                try managedObjectContext.save()
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+    }
 }
 
 
@@ -43,5 +71,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
