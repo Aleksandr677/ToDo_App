@@ -16,6 +16,7 @@ struct ContentView: View {
     @FetchRequest(entity: Todo.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Todo.name, ascending: true)]) var todos: FetchedResults<Todo>
     
     @State private var showingAddTodoView: Bool = false
+    @State private var animatingButton : Bool = false
     
     //MARK: - BODY
     var body: some View {
@@ -55,6 +56,48 @@ struct ContentView: View {
                     EmptyListView()
                 }
             } //ZStack
+            .sheet(isPresented: $showingAddTodoView) {
+                AddTodoView()
+                    .environment(\.managedObjectContext, managedObjectContext)
+            }
+            .overlay(alignment: .bottomTrailing) {
+                ZStack {
+                    
+                    Group {
+                        Circle()
+                            .fill(Color.blue)
+                            .opacity(animatingButton ? 0.2 : 0)
+                            .scaleEffect(animatingButton ? 1 : 0)
+                            .frame(width: 68, height: 68, alignment: .center)
+                            .padding(.bottom, 15)
+                            .padding(.trailing, 15)
+                        
+                        Circle()
+                            .fill(Color.blue)
+                            .opacity(animatingButton ? 0.15 : 0)
+                            .scaleEffect(animatingButton ? 1 : 0)
+                            .frame(width: 88, height: 88, alignment: .center)
+                            .padding(.bottom, 15)
+                            .padding(.trailing, 15)
+                    }
+                    .animation(Animation.easeInOut(duration: 2).repeatForever(autoreverses: true), value: animatingButton)
+                    
+                    Button {
+                        showingAddTodoView.toggle()
+                    } label: {
+                        Image(systemName: "plus.circle.fill")
+                            .resizable()
+                            .scaledToFit()
+                            .background(Circle().fill(Color("ColorBase")))
+                            .frame(width: 48, height: 48, alignment: .center)
+                            .padding(.bottom, 15)
+                            .padding(.trailing, 15)
+                    } //Button
+                    .onAppear {
+                        animatingButton.toggle()
+                    }
+                } //ZStack
+            }
         } //Navigation
     }
     
