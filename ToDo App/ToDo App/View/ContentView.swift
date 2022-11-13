@@ -16,38 +16,45 @@ struct ContentView: View {
     @FetchRequest(entity: Todo.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Todo.name, ascending: true)]) var todos: FetchedResults<Todo>
     
     @State private var showingAddTodoView: Bool = false
-
+    
     //MARK: - BODY
     var body: some View {
         NavigationView {
-            List {
-                ForEach(todos, id: \.self) { todo in
-                    HStack {
-                        Text(todo.name ?? "Unknown")
-                        
-                        Spacer()
-                        
-                        Text(todo.priority ?? "Unknown")
+            ZStack {
+                List {
+                    ForEach(todos, id: \.self) { todo in
+                        HStack {
+                            Text(todo.name ?? "Unknown")
+                            
+                            Spacer()
+                            
+                            Text(todo.priority ?? "Unknown")
+                        }
+                    } //Loop
+                    .onDelete(perform: deleteTodo)
+                } //List
+                .navigationTitle("Todo")
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    EditButton()
+                    
+                    Button {
+                        //Show add todo view
+                        showingAddTodoView.toggle()
+                    } label: {
+                        Image(systemName: "plus")
                     }
-                } //Loop
-                .onDelete(perform: deleteTodo)
-            } //List
-            .navigationTitle("Todo")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                EditButton()
-                
-                Button {
-                    //Show add todo view
-                    showingAddTodoView.toggle()
-                } label: {
-                    Image(systemName: "plus")
+                } //Bar
+                .sheet(isPresented: $showingAddTodoView) {
+                    AddTodoView()
+                        .environment(\.managedObjectContext, managedObjectContext)
                 }
-            } //Bar
-            .sheet(isPresented: $showingAddTodoView) {
-                AddTodoView()
-                    .environment(\.managedObjectContext, managedObjectContext)
-            }
+                
+                //MARK: - NO TODO ITEMS
+                if todos.count == 0 {
+                    EmptyListView()
+                }
+            } //ZStack
         } //Navigation
     }
     

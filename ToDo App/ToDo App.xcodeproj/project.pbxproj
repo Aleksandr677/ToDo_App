@@ -14,6 +14,7 @@
 		760FBC722920F641000D2B37 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760FBC712920F641000D2B37 /* Persistence.swift */; };
 		760FBC752920F641000D2B37 /* ToDo_App.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 760FBC732920F641000D2B37 /* ToDo_App.xcdatamodeld */; };
 		760FBC7D2920F67D000D2B37 /* AddTodoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760FBC7C2920F67D000D2B37 /* AddTodoView.swift */; };
+		760FBC8029211DEA000D2B37 /* EmptyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760FBC7F29211DEA000D2B37 /* EmptyListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,8 @@
 		760FBC712920F641000D2B37 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		760FBC742920F641000D2B37 /* ToDo_App.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ToDo_App.xcdatamodel; sourceTree = "<group>"; };
 		760FBC7C2920F67D000D2B37 /* AddTodoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoView.swift; sourceTree = "<group>"; };
+		760FBC7E29211D09000D2B37 /* ToDo-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "ToDo-App-Info.plist"; sourceTree = SOURCE_ROOT; };
+		760FBC7F29211DEA000D2B37 /* EmptyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +60,7 @@
 		760FBC672920F63F000D2B37 /* ToDo App */ = {
 			isa = PBXGroup;
 			children = (
+				760FBC7E29211D09000D2B37 /* ToDo-App-Info.plist */,
 				760FBC682920F63F000D2B37 /* ToDo_AppApp.swift */,
 				760FBC7B2920F65A000D2B37 /* View */,
 				760FBC6C2920F641000D2B37 /* Assets.xcassets */,
@@ -80,6 +84,7 @@
 			children = (
 				760FBC6A2920F63F000D2B37 /* ContentView.swift */,
 				760FBC7C2920F67D000D2B37 /* AddTodoView.swift */,
+				760FBC7F29211DEA000D2B37 /* EmptyListView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -156,6 +161,7 @@
 			files = (
 				760FBC722920F641000D2B37 /* Persistence.swift in Sources */,
 				760FBC6B2920F63F000D2B37 /* ContentView.swift in Sources */,
+				760FBC8029211DEA000D2B37 /* EmptyListView.swift in Sources */,
 				760FBC692920F63F000D2B37 /* ToDo_AppApp.swift in Sources */,
 				760FBC752920F641000D2B37 /* ToDo_App.xcdatamodeld in Sources */,
 				760FBC7D2920F67D000D2B37 /* AddTodoView.swift in Sources */,
@@ -290,9 +296,9 @@
 				DEVELOPMENT_TEAM = THGV2QJ4R5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "ToDo-App-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -319,9 +325,9 @@
 				DEVELOPMENT_TEAM = THGV2QJ4R5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "ToDo-App-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
