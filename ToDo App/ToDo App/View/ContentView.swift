@@ -10,6 +10,8 @@ import CoreData
 
 struct ContentView: View {
     //MARK: - PROPERTIES
+    @Environment(\.managedObjectContext) var managedObjectContext
+    
     @State private var showingAddTodoView: Bool = false
 
     //MARK: - BODY
@@ -30,6 +32,7 @@ struct ContentView: View {
             } //Bar
             .sheet(isPresented: $showingAddTodoView) {
                 AddTodoView()
+                    .environment(\.managedObjectContext, managedObjectContext)
             }
         } //Navigation
     }
