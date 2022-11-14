@@ -1,6 +1,8 @@
 # ToDo_App
 Repo for creating a gorgeous ToDo application
- Screenshots:
+
+
+Screenshots:
  
  iPhone
  
@@ -56,3 +58,4 @@ Stack:
 8. Custom animations
 9. Custom elements
 10. iPhone / iPad compatibility
+11. Dark / Light mode
