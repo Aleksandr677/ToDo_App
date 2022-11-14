@@ -26,7 +26,7 @@ struct SettingsView: View {
                     //MARK: - Section 1
                     Section {
                         Picker(selection: $iconSettings.currentIndex) {
-                            ForEach(0..<iconSettings.iconNames.count) { index in
+                            ForEach(0..<iconSettings.iconNames.count, id: \.self) { index in
                                 HStack {
                                     Image(uiImage: UIImage(named: self.iconSettings.iconNames[index] ?? "Blue") ?? UIImage())
                                         .renderingMode(.original)
@@ -50,7 +50,7 @@ struct SettingsView: View {
                                     
                                     Image(systemName: "paintbrush")
                                         .font(.system(size: 28, weight: .regular, design: .default))
-                                    .foregroundColor(.primary)
+                                        .foregroundColor(.primary)
                                 }
                                 .frame(width: 44, height: 44)
                                 
@@ -83,7 +83,9 @@ struct SettingsView: View {
                         List {
                             ForEach(themes, id: \.id) { theme in
                                 Button {
-                                    self.theme.themeSettings = theme.id
+                                    DispatchQueue.main.async {
+                                        self.theme.themeSettings = theme.id
+                                    }
                                     UserDefaults.standard.set(self.theme.themeSettings, forKey: "Theme")
                                 } label: {
                                     HStack {
