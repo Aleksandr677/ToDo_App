@@ -22,6 +22,10 @@ struct ContentView: View {
     @State private var animatingButton : Bool = false
     @State private var showingSettingsView: Bool = false
     
+    //Theme
+    @ObservedObject var theme = ThemeSettings.shared
+    var themes = themeData
+    
     //MARK: - BODY
     var body: some View {
         NavigationView {
@@ -29,12 +33,26 @@ struct ContentView: View {
                 List {
                     ForEach(todos, id: \.self) { todo in
                         HStack {
+                            Circle()
+                                .frame(width: 12, height: 12, alignment: .center)
+                                .foregroundColor(self.colorize(priority: todo.priority ?? "Normal"))
+                            
                             Text(todo.name ?? "Unknown")
+                                .fontWeight(.semibold)
                             
                             Spacer()
                             
                             Text(todo.priority ?? "Unknown")
-                        }
+                                .font(.footnote)
+                                .foregroundColor(Color(UIColor.systemGray2))
+                                .padding(3)
+                                .frame(minWidth: 62)
+                                .overlay {
+                                    Capsule()
+                                        .stroke(Color(UIColor.systemGray2), lineWidth: 0.75)
+                                }
+                        } //HStack
+                        .padding(.vertical, 10)
                     } //Loop
                     .onDelete(perform: deleteTodo)
                 } //List
@@ -42,14 +60,15 @@ struct ContentView: View {
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     EditButton()
+                        .tint(themes[self.theme.themeSettings].themeColor)
                     
                     Button {
-                        //Show add todo view
                         showingSettingsView.toggle()
                     } label: {
                         Image(systemName: "paintbrush")
                             .imageScale(.large)
-                    }
+                    } //Settings button
+                    .tint(themes[self.theme.themeSettings].themeColor)
                 } //Bar
                 .sheet(isPresented: $showingSettingsView) {
                     SettingsView()
@@ -69,7 +88,7 @@ struct ContentView: View {
                 ZStack {
                     Group {
                         Circle()
-                            .fill(Color.blue)
+                            .fill(themes[self.theme.themeSettings].themeColor)
                             .opacity(animatingButton ? 0.2 : 0)
                             .scaleEffect(animatingButton ? 1 : 0)
                             .frame(width: 68, height: 68, alignment: .center)
@@ -77,7 +96,7 @@ struct ContentView: View {
                             .padding(.trailing, 15)
                         
                         Circle()
-                            .fill(Color.blue)
+                            .fill(themes[self.theme.themeSettings].themeColor)
                             .opacity(animatingButton ? 0.15 : 0)
                             .scaleEffect(animatingButton ? 1 : 0)
                             .frame(width: 88, height: 88, alignment: .center)
@@ -97,12 +116,14 @@ struct ContentView: View {
                             .padding(.bottom, 15)
                             .padding(.trailing, 15)
                     } //Button
+                    .tint(themes[self.theme.themeSettings].themeColor)
                     .onAppear {
                         animatingButton.toggle()
                     }
                 } //ZStack
             }
         } //Navigation
+        .navigationViewStyle(StackNavigationViewStyle())
     }
     
     //MARK: - FUNCTIONS
@@ -116,6 +137,19 @@ struct ContentView: View {
             } catch {
                 print(error.localizedDescription)
             }
+        }
+    }
+    
+    private func colorize(priority: String) -> Color {
+        switch priority {
+        case "High":
+            return .pink
+        case "Normal":
+            return .green
+        case "Low":
+            return .blue
+        default:
+            return .gray
         }
     }
 }

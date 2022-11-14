@@ -13,6 +13,10 @@ struct SettingsView: View {
     
     @EnvironmentObject var iconSettings: IconNames
     
+    //THEME
+    let themes: [Theme] = themeData
+    @ObservedObject var theme = ThemeSettings.shared
+    
     //MARK: - BODY
     var body: some View {
         NavigationView {
@@ -74,6 +78,35 @@ struct SettingsView: View {
                     } //Section 1
                     .padding(.vertical, 3)
                     
+                    //MARK: - Section 2
+                    Section {
+                        List {
+                            ForEach(themes, id: \.id) { theme in
+                                Button {
+                                    self.theme.themeSettings = theme.id
+                                    UserDefaults.standard.set(self.theme.themeSettings, forKey: "Theme")
+                                } label: {
+                                    HStack {
+                                        Image(systemName: "circle.fill")
+                                            .foregroundColor(theme.themeColor)
+                                        Text(theme.themeName)
+                                    } //Hstack
+                                } //Button
+                                .tint(Color.primary)
+                            } //Loop
+                        } //List
+                    } header: {
+                        HStack {
+                            Text("Choose the app theme")
+                            
+                            Image(systemName: "circle.fill")
+                                .resizable()
+                                .frame(width: 10, height: 10)
+                                .foregroundColor(themes[theme.themeSettings].themeColor)
+                        } //Hstack
+                    } //Section 2
+                    .padding(.vertical, 3)
+                    
                     //MARK: - Section 3
                     Section {
                         FormRowLinkView(icon: "globe", color: Color.pink, text: "Website", link: "https://swiftuimasterclass.com")
@@ -125,6 +158,8 @@ struct SettingsView: View {
             .navigationBarTitleDisplayMode(.inline)
             .background(Color("ColorBackground").edgesIgnoringSafeArea(.all))
         } //Navigation
+        .tint(themes[self.theme.themeSettings].themeColor)
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
