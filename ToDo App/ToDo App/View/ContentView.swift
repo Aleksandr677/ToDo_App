@@ -17,6 +17,7 @@ struct ContentView: View {
     
     @State private var showingAddTodoView: Bool = false
     @State private var animatingButton : Bool = false
+    @State private var showingSettingsView: Bool = false
     
     //MARK: - BODY
     var body: some View {
@@ -41,14 +42,14 @@ struct ContentView: View {
                     
                     Button {
                         //Show add todo view
-                        showingAddTodoView.toggle()
+                        showingSettingsView.toggle()
                     } label: {
-                        Image(systemName: "plus")
+                        Image(systemName: "paintbrush")
+                            .imageScale(.large)
                     }
                 } //Bar
-                .sheet(isPresented: $showingAddTodoView) {
-                    AddTodoView()
-                        .environment(\.managedObjectContext, managedObjectContext)
+                .sheet(isPresented: $showingSettingsView) {
+                    SettingsView()
                 }
                 
                 //MARK: - NO TODO ITEMS
