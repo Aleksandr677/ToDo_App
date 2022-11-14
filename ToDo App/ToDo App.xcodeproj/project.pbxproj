@@ -18,6 +18,15 @@
 		761BC60529222AF500413C52 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761BC60429222AF500413C52 /* SettingsView.swift */; };
 		761BC60729222D5F00413C52 /* FormRowStaticView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761BC60629222D5F00413C52 /* FormRowStaticView.swift */; };
 		761BC60929222FBC00413C52 /* FormRowLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761BC60829222FBC00413C52 /* FormRowLinkView.swift */; };
+		761BC614292236D500413C52 /* Pink.png in Resources */ = {isa = PBXBuildFile; fileRef = 761BC60B292236D500413C52 /* Pink.png */; };
+		761BC615292236D500413C52 /* Blue Light.png in Resources */ = {isa = PBXBuildFile; fileRef = 761BC60C292236D500413C52 /* Blue Light.png */; };
+		761BC616292236D500413C52 /* Green Dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 761BC60D292236D500413C52 /* Green Dark.png */; };
+		761BC617292236D500413C52 /* Blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 761BC60E292236D500413C52 /* Blue.png */; };
+		761BC618292236D500413C52 /* Pink Light.png in Resources */ = {isa = PBXBuildFile; fileRef = 761BC60F292236D500413C52 /* Pink Light.png */; };
+		761BC619292236D500413C52 /* Green Light.png in Resources */ = {isa = PBXBuildFile; fileRef = 761BC610292236D500413C52 /* Green Light.png */; };
+		761BC61A292236D500413C52 /* Pink Dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 761BC611292236D500413C52 /* Pink Dark.png */; };
+		761BC61B292236D500413C52 /* Green.png in Resources */ = {isa = PBXBuildFile; fileRef = 761BC612292236D500413C52 /* Green.png */; };
+		761BC61C292236D500413C52 /* Blue Dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 761BC613292236D500413C52 /* Blue Dark.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +43,15 @@
 		761BC60429222AF500413C52 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		761BC60629222D5F00413C52 /* FormRowStaticView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormRowStaticView.swift; sourceTree = "<group>"; };
 		761BC60829222FBC00413C52 /* FormRowLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormRowLinkView.swift; sourceTree = "<group>"; };
+		761BC60B292236D500413C52 /* Pink.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Pink.png; sourceTree = "<group>"; };
+		761BC60C292236D500413C52 /* Blue Light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Blue Light.png"; sourceTree = "<group>"; };
+		761BC60D292236D500413C52 /* Green Dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Green Dark.png"; sourceTree = "<group>"; };
+		761BC60E292236D500413C52 /* Blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Blue.png; sourceTree = "<group>"; };
+		761BC60F292236D500413C52 /* Pink Light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Pink Light.png"; sourceTree = "<group>"; };
+		761BC610292236D500413C52 /* Green Light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Green Light.png"; sourceTree = "<group>"; };
+		761BC611292236D500413C52 /* Pink Dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Pink Dark.png"; sourceTree = "<group>"; };
+		761BC612292236D500413C52 /* Green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Green.png; sourceTree = "<group>"; };
+		761BC613292236D500413C52 /* Blue Dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Blue Dark.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +84,7 @@
 		760FBC672920F63F000D2B37 /* ToDo App */ = {
 			isa = PBXGroup;
 			children = (
+				761BC60A2922369E00413C52 /* Icons */,
 				760FBC7E29211D09000D2B37 /* ToDo-App-Info.plist */,
 				760FBC682920F63F000D2B37 /* ToDo_AppApp.swift */,
 				760FBC7B2920F65A000D2B37 /* View */,
@@ -96,6 +115,22 @@
 				761BC60829222FBC00413C52 /* FormRowLinkView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		761BC60A2922369E00413C52 /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				761BC613292236D500413C52 /* Blue Dark.png */,
+				761BC60C292236D500413C52 /* Blue Light.png */,
+				761BC60E292236D500413C52 /* Blue.png */,
+				761BC60D292236D500413C52 /* Green Dark.png */,
+				761BC610292236D500413C52 /* Green Light.png */,
+				761BC612292236D500413C52 /* Green.png */,
+				761BC611292236D500413C52 /* Pink Dark.png */,
+				761BC60F292236D500413C52 /* Pink Light.png */,
+				761BC60B292236D500413C52 /* Pink.png */,
+			);
+			path = Icons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -156,8 +191,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				761BC614292236D500413C52 /* Pink.png in Resources */,
+				761BC616292236D500413C52 /* Green Dark.png in Resources */,
+				761BC61C292236D500413C52 /* Blue Dark.png in Resources */,
+				761BC615292236D500413C52 /* Blue Light.png in Resources */,
+				761BC61A292236D500413C52 /* Pink Dark.png in Resources */,
+				761BC619292236D500413C52 /* Green Light.png in Resources */,
+				761BC617292236D500413C52 /* Blue.png in Resources */,
 				760FBC702920F641000D2B37 /* Preview Assets.xcassets in Resources */,
 				760FBC6D2920F641000D2B37 /* Assets.xcassets in Resources */,
+				761BC618292236D500413C52 /* Pink Light.png in Resources */,
+				761BC61B292236D500413C52 /* Green.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -15,6 +15,9 @@ struct ContentView: View {
     //Fetch Todo items
     @FetchRequest(entity: Todo.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Todo.name, ascending: true)]) var todos: FetchedResults<Todo>
     
+    //Work with app icon
+    @EnvironmentObject var iconSettings: IconNames
+    
     @State private var showingAddTodoView: Bool = false
     @State private var animatingButton : Bool = false
     @State private var showingSettingsView: Bool = false
@@ -50,6 +53,7 @@ struct ContentView: View {
                 } //Bar
                 .sheet(isPresented: $showingSettingsView) {
                     SettingsView()
+                        .environmentObject(iconSettings)
                 }
                 
                 //MARK: - NO TODO ITEMS
@@ -63,7 +67,6 @@ struct ContentView: View {
             }
             .overlay(alignment: .bottomTrailing) {
                 ZStack {
-                    
                     Group {
                         Circle()
                             .fill(Color.blue)
